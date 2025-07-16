@@ -1,9 +1,11 @@
 <template>
   <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-sparktro flex flex-col h-full">
     <div class="flex justify-between items-center mb-4">
-      <div class="flex items-center space-x-6">
-        <h2 class="text-lg font-semibold text-black-sparktro">Revenue</h2>
-        <div class="flex items-center space-x-4">
+      <h2 class="text-lg font-semibold text-black-sparktro">Revenue</h2>
+      
+      <div class="flex items-center space-x-4">
+       
+        <div class="flex items-center space-x-4 ">
           <div
             v-for="(seriesItem, index) in series"
             :key="seriesItem.name"
@@ -22,28 +24,29 @@
             </span>
           </div>
         </div>
-      </div>
 
-      <div class="relative">
-        <select
-          class="appearance-none text-sm border border-gray-300 rounded px-3 py-1 pr-8 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        >
-          <option>May 2025</option>
-        </select>
-        <div class="pointer-events-none absolute inset-y-0 right-2 flex items-center text-gray-500">
-          <svg
-            class="w-4 h-4"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
+        <!-- Dropdown -->
+        <div class="relative">
+          <select
+            class="appearance-none text-sm border border-gray-300 rounded px-3 py-1 pr-8 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M19 9l-7 7-7-7"
-            />
-          </svg>
+            <option>May 2025</option>
+          </select>
+          <div class="pointer-events-none absolute inset-y-0 right-2 flex items-center text-gray-500">
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </div>
         </div>
       </div>
     </div>
@@ -59,7 +62,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue"; // No need for onMounted if not manipulating legend DOM directly
+import { ref } from "vue";
 import VueApexCharts from "vue3-apexcharts";
 
 defineOptions({ components: { apexchart: VueApexCharts } });
@@ -83,10 +86,10 @@ const chartOptions = ref({
   chart: {
     toolbar: { show: false },
     zoom: { enabled: false },
-    height: '100%', // Crucial: Make chart fill 100% of its container's height
-    events: {}, // No manual legend manipulation
+    height: '100%',
+    events: {},
   },
-  colors: ["#3E82F7", "#28C76F"], // Figma colors
+  colors: ["#3E82F7", "#28C76F"],
   dataLabels: { enabled: false },
   stroke: {
     curve: "smooth",
@@ -118,11 +121,10 @@ const chartOptions = ref({
     },
   },
   legend: {
-    show: false, // Crucial: Disable ApexCharts' internal legend
+    show: false,
   },
 });
 
-// Function to toggle series visibility from custom legend
 const toggleSeries = (seriesIndex) => {
   if (chart.value) {
     chart.value.toggleSeries(series.value[seriesIndex].name);
@@ -131,5 +133,8 @@ const toggleSeries = (seriesIndex) => {
 </script>
 
 <style scoped>
-/* No custom ApexCharts legend styles needed anymore */
+/* Optional: Add this if you want the legend items closer together */
+.flex.items-center.space-x-4 {
+  column-gap: 1rem; /* Adjust this value as needed */
+}
 </style>

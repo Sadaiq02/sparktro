@@ -5,6 +5,7 @@ import RevenueChart from "@/Components/Charts/RevenueChart.vue";
 import SalesChart from "@/Components/Charts/SalesChart.vue";
 import CalendarSchedule from "@/Components/CalendarSchedule.vue";
 import BrowseStatus from "@/Components/BrowseStatus.vue";
+import TaskStatus from "@/Components/TaskStatus.vue";
 
 import Dropdown from "@/Components/Dropdown.vue";
 import DropdownLink from "@/Components/DropdownLink.vue";
@@ -314,23 +315,23 @@ const notificationMenuOpen = ref(false);
         </div>
       </header>
 
+     
       <!-- Main Section -->
       <main class="p-6 bg-gray-sparktro">
         <!-- Top Metrics Section -->
         <TopMetrics />
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          
-          <!-- Revenue -->
+
+        <!-- First Row - Two columns -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <RevenueChart />
-
-          <!-- Sales -->
           <SalesChart />
+        </div>
 
-          <!-- Calendar Schedule -->
-           <CalendarSchedule />
-
-           <!-- Browse Status -->
-           <BrowseStatus />
+        <!-- Second Row - Three columns -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <CalendarSchedule />
+          <BrowseStatus />
+          <TaskStatus />
         </div>
       </main>
     </div>

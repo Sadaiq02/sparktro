@@ -1,1 +1,0 @@
-import{f as s,o as t,l as o}from"./app-CveO7qo7.js";const r={class:"min-h-screen bg-gray-100 pt-6 sm:justify-center sm:pt-0"},_={__name:"GuestLayout",setup(a){return(e,n)=>(t(),s("div",r,[o(e.$slots,"default")]))}};export{_};
